@@ -21,6 +21,8 @@ function addToLibrary(title, author, pages, read) {
   const id = crypto.randomUUID();
   const book = new Book(id, title, author, pages, read);
   library.push(book);
+
+  displayLibrary();
 }
 
 function displayLibrary() {
@@ -31,6 +33,23 @@ function displayLibrary() {
     booksContainer.appendChild(paragraph);
     return;
   }
+
+  const ulist = document.createElement("ul");
+  for (const book of library) {
+    const list = document.createElement("li");
+    const bookCard = document.createElement("div");
+    const heading = document.createElement("h2");
+    const description = document.createElement("p");
+
+    heading.textContent = book.title;
+    description.textContent = book.description();
+
+    bookCard.appendChild(heading, description);
+    list.appendChild(bookCard);
+    ulist.appendChild(list);
+  }
+
+  booksContainer.appendChild(ulist);
 }
 
 displayLibrary();
