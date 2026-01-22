@@ -1,5 +1,6 @@
 const library = [];
 const booksContainer = document.querySelector(".books");
+const newBookForm = document.querySelector("form");
 
 function Book(id, title, author, pages, read) {
   if (!new.target)
@@ -33,3 +34,14 @@ function displayLibrary() {
 }
 
 displayLibrary();
+
+newBookForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const title = e.target.title.value;
+  const author = e.target.author.value;
+  const pages = e.target.pages.value;
+  const read = e.target.read.checked;
+
+  const book = addToLibrary(title, author, pages, read);
+});
