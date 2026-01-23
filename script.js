@@ -1,7 +1,3 @@
-const library = [];
-const booksContainer = document.querySelector(".books");
-const newBookForm = document.querySelector("form");
-
 function Book(id, title, author, pages, read) {
   if (!new.target)
     throw Error("You must use the 'new' operator to call the constructor");
@@ -65,6 +61,11 @@ function submitHandler(e) {
 
   newBookForm.reset();
 }
+
+// Code starts here
+const library = [];
+const booksContainer = document.querySelector(".books");
+const newBookForm = document.querySelector("form");
 
 displayLibrary();
 
