@@ -28,33 +28,32 @@ function addToLibrary(title, author, pages, read) {
 function displayLibrary() {
   if (library.length === 0) {
     const paragraph = document.createElement("p");
-    paragraph.textContent = "No books";
+    paragraph.textContent = "No books.";
 
     booksContainer.appendChild(paragraph);
     return;
   }
 
-  const ulist = document.createElement("ul");
+  booksContainer.replaceChildren();
+
+  const list = document.createElement("ul");
   for (const book of library) {
-    const list = document.createElement("li");
-    const bookCard = document.createElement("div");
-    const heading = document.createElement("h2");
-    const description = document.createElement("p");
+    const item = document.createElement("li");
 
-    heading.textContent = book.title;
-    description.textContent = book.description();
+    item.innerHTML = `
+        <div>
+            <h2>${book.title}</h2> 
+            <p>${book.description()}</p>
+        </div>
+        `;
 
-    bookCard.appendChild(heading, description);
-    list.appendChild(bookCard);
-    ulist.appendChild(list);
+    list.appendChild(item);
   }
 
-  booksContainer.appendChild(ulist);
+  booksContainer.appendChild(list);
 }
 
-displayLibrary();
-
-newBookForm.addEventListener("submit", (e) => {
+function submitHandler(e) {
   e.preventDefault();
 
   const title = e.target.title.value;
@@ -62,5 +61,9 @@ newBookForm.addEventListener("submit", (e) => {
   const pages = e.target.pages.value;
   const read = e.target.read.checked;
 
-  const book = addToLibrary(title, author, pages, read);
-});
+  addToLibrary(title, author, pages, read);
+}
+
+displayLibrary();
+
+newBookForm.addEventListener("submit", submitHandler);
