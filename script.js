@@ -11,11 +11,11 @@ function Book(id, title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-
-  this.description = function () {
-    return `by ${this.author}, ${this.pages} pages`;
-  };
 }
+
+Book.prototype.description = function () {
+  return `by ${this.author}, ${this.pages} pages`;
+};
 
 function addToLibrary(title, author, pages, read) {
   const id = crypto.randomUUID();
