@@ -13,8 +13,10 @@ Book.prototype.description = function () {
   return `by ${this.author}, ${this.pages} pages`;
 };
 
-function Library(container) {
-  container = container;
+function Library() {
+  if (!new.target)
+    throw Error("You must use the 'new' operator to call the constructor");
+
   const books = [];
 
   this.add = function (title, author, pages, read) {
@@ -22,7 +24,11 @@ function Library(container) {
     const book = new Book(id, title, author, pages, read);
     books.push(book);
 
-    this.displayLibrary();
+    displayLibrary(books);
+  };
+
+  this.getAllBooks = function () {
+    return books;
   };
 
   remove = function (e) {
@@ -30,32 +36,33 @@ function Library(container) {
     const index = books.findIndex((book) => book.id === id);
     books.splice(index, 1);
 
-    this.displayLibrary();
+    displayLibrary(books);
   };
+}
 
-  this.displayLibrary = function () {
-    let removeButtonElements = document.querySelectorAll(".remove-button");
+function displayLibrary(books) {
+  let removeButtonElements = document.querySelectorAll(".remove-button");
 
-    if (removeButtonElements.length > 0)
-      removeButtonElements.forEach((button) =>
-        button.removeEventListener("click", remove.bind(this)),
-      );
+  if (removeButtonElements.length > 0)
+    removeButtonElements.forEach((button) =>
+      button.removeEventListener("click", remove.bind(this)),
+    );
 
-    container.replaceChildren();
+  container.replaceChildren();
 
-    if (books.length === 0) {
-      const paragraph = document.createElement("p");
-      paragraph.textContent = "No books.";
+  if (books.length === 0) {
+    const paragraph = document.createElement("p");
+    paragraph.textContent = "No books.";
 
-      container.appendChild(paragraph);
-      return;
-    }
+    container.appendChild(paragraph);
+    return;
+  }
 
-    const list = document.createElement("ul");
-    for (const book of books) {
-      const item = document.createElement("li");
+  const list = document.createElement("ul");
+  for (const book of books) {
+    const item = document.createElement("li");
 
-      item.innerHTML = `
+    item.innerHTML = `
         <div>
             <h2>${book.title}</h2> 
             <p>${book.description()}</p>
@@ -63,16 +70,15 @@ function Library(container) {
         </div>
         `;
 
-      list.appendChild(item);
-    }
+    list.appendChild(item);
+  }
 
-    container.appendChild(list);
+  container.appendChild(list);
 
-    removeButtonElements = document.querySelectorAll(".remove-button");
-    removeButtonElements.forEach((button) =>
-      button.addEventListener("click", remove.bind(this)),
-    );
-  };
+  removeButtonElements = document.querySelectorAll(".remove-button");
+  removeButtonElements.forEach((button) =>
+    button.addEventListener("click", remove.bind(this)),
+  );
 }
 
 function submitHandler(e) {
@@ -92,8 +98,7 @@ function submitHandler(e) {
 const container = document.querySelector(".books");
 const newBookForm = document.querySelector("form");
 
-const library = new Library(container);
-
-library.displayLibrary();
+const library = new Library();
+displayLibrary(library.getAllBooks());
 
 newBookForm.addEventListener("submit", submitHandler);
