@@ -62,6 +62,8 @@ function submitHandler(e) {
   const read = e.target.read.checked;
 
   addToLibrary(title, author, pages, read);
+
+  newBookForm.reset();
 }
 
 displayLibrary();
