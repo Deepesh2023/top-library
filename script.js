@@ -13,45 +13,49 @@ Book.prototype.description = function () {
   return `by ${this.author}, ${this.pages} pages`;
 };
 
-function addToLibrary(title, author, pages, read) {
-  const id = crypto.randomUUID();
-  const book = new Book(id, title, author, pages, read);
-  library.push(book);
+function Library(container) {
+  container = container;
+  const books = [];
 
-  displayLibrary();
-}
+  this.add = function (title, author, pages, read) {
+    const id = crypto.randomUUID();
+    const book = new Book(id, title, author, pages, read);
+    books.push(book);
 
-function removeFromLibrary(e) {
-  const id = e.target.dataset.id;
-  const index = library.findIndex((book) => book.id === id);
-  library.splice(index, 1);
+    this.displayLibrary();
+  };
 
-  displayLibrary();
-}
+  remove = function (e) {
+    const id = e.target.dataset.id;
+    const index = books.findIndex((book) => book.id === id);
+    books.splice(index, 1);
 
-function displayLibrary() {
-  let removeButtonElements = document.querySelectorAll(".remove-button");
+    this.displayLibrary();
+  };
 
-  if (removeButtonElements.length > 0)
-    removeButtonElements.forEach((button) =>
-      button.removeEventListener("click", removeFromLibrary),
-    );
+  this.displayLibrary = function () {
+    let removeButtonElements = document.querySelectorAll(".remove-button");
 
-  booksContainer.replaceChildren();
+    if (removeButtonElements.length > 0)
+      removeButtonElements.forEach((button) =>
+        button.removeEventListener("click", remove.bind(this)),
+      );
 
-  if (library.length === 0) {
-    const paragraph = document.createElement("p");
-    paragraph.textContent = "No books.";
+    container.replaceChildren();
 
-    booksContainer.appendChild(paragraph);
-    return;
-  }
+    if (books.length === 0) {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = "No books.";
 
-  const list = document.createElement("ul");
-  for (const book of library) {
-    const item = document.createElement("li");
+      container.appendChild(paragraph);
+      return;
+    }
 
-    item.innerHTML = `
+    const list = document.createElement("ul");
+    for (const book of books) {
+      const item = document.createElement("li");
+
+      item.innerHTML = `
         <div>
             <h2>${book.title}</h2> 
             <p>${book.description()}</p>
@@ -59,15 +63,16 @@ function displayLibrary() {
         </div>
         `;
 
-    list.appendChild(item);
-  }
+      list.appendChild(item);
+    }
 
-  booksContainer.appendChild(list);
+    container.appendChild(list);
 
-  removeButtonElements = document.querySelectorAll(".remove-button");
-  removeButtonElements.forEach((button) =>
-    button.addEventListener("click", removeFromLibrary),
-  );
+    removeButtonElements = document.querySelectorAll(".remove-button");
+    removeButtonElements.forEach((button) =>
+      button.addEventListener("click", remove.bind(this)),
+    );
+  };
 }
 
 function submitHandler(e) {
@@ -78,16 +83,17 @@ function submitHandler(e) {
   const pages = e.target.pages.value;
   const read = e.target.read.checked;
 
-  addToLibrary(title, author, pages, read);
+  library.add(title, author, pages, read);
 
   newBookForm.reset();
 }
 
 // Code starts here
-const library = [];
-const booksContainer = document.querySelector(".books");
+const container = document.querySelector(".books");
 const newBookForm = document.querySelector("form");
 
-displayLibrary();
+const library = new Library(container);
+
+library.displayLibrary();
 
 newBookForm.addEventListener("submit", submitHandler);
