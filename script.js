@@ -21,7 +21,18 @@ function addToLibrary(title, author, pages, read) {
   displayLibrary();
 }
 
+function removeFromLibrary(e) {
+  const id = e.target.dataset.id;
+  const index = library.findIndex((book) => book.id === id);
+  library.splice(index, 1);
+
+  displayLibrary();
+  e.target.removeEventListener("click", removeFromLibrary);
+}
+
 function displayLibrary() {
+  booksContainer.replaceChildren();
+
   if (library.length === 0) {
     const paragraph = document.createElement("p");
     paragraph.textContent = "No books.";
@@ -29,8 +40,6 @@ function displayLibrary() {
     booksContainer.appendChild(paragraph);
     return;
   }
-
-  booksContainer.replaceChildren();
 
   const list = document.createElement("ul");
   for (const book of library) {
@@ -40,6 +49,7 @@ function displayLibrary() {
         <div>
             <h2>${book.title}</h2> 
             <p>${book.description()}</p>
+            <button class="remove-button" data-id="${book.id}">Remove</button>
         </div>
         `;
 
@@ -47,6 +57,11 @@ function displayLibrary() {
   }
 
   booksContainer.appendChild(list);
+
+  const removeButtons = document.querySelectorAll(".remove-button");
+  removeButtons.forEach((button) =>
+    button.addEventListener("click", removeFromLibrary),
+  );
 }
 
 function submitHandler(e) {
