@@ -27,10 +27,16 @@ function removeFromLibrary(e) {
   library.splice(index, 1);
 
   displayLibrary();
-  e.target.removeEventListener("click", removeFromLibrary);
 }
 
 function displayLibrary() {
+  let removeButtonElements = document.querySelectorAll(".remove-button");
+
+  if (removeButtonElements.length > 0)
+    removeButtonElements.forEach((button) =>
+      button.removeEventListener("click", removeFromLibrary),
+    );
+
   booksContainer.replaceChildren();
 
   if (library.length === 0) {
@@ -58,8 +64,8 @@ function displayLibrary() {
 
   booksContainer.appendChild(list);
 
-  const removeButtons = document.querySelectorAll(".remove-button");
-  removeButtons.forEach((button) =>
+  removeButtonElements = document.querySelectorAll(".remove-button");
+  removeButtonElements.forEach((button) =>
     button.addEventListener("click", removeFromLibrary),
   );
 }
