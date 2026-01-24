@@ -91,6 +91,7 @@ function submitHandler(e) {
   library.add(title, author, pages, read);
 
   newBookForm.reset();
+  newBookDialog.close();
 }
 
 function removeFromLibrary(e) {
@@ -99,10 +100,14 @@ function removeFromLibrary(e) {
 }
 
 // Code starts here
+const newBookButton = document.querySelector(".new-book");
+const newBookDialog = document.querySelector("dialog");
 const container = document.querySelector(".books");
 const newBookForm = document.querySelector("form");
 
 const library = new Library();
 displayLibrary(library.getAllBooks());
+
+newBookButton.addEventListener("click", () => newBookDialog.showModal());
 
 newBookForm.addEventListener("submit", submitHandler);

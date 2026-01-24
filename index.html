@@ -11,31 +11,35 @@
     <div class="container">
       <h1>Library</h1>
 
-      <form>
-        <label for="title" class="text-input">
-          Title
-          <input id="title" name="title" />
-        </label>
+      <button class="new-book">New book</button>
 
-        <label for="author" class="text-input">
-          Author
-          <input id="author" name="author" />
-        </label>
+      <dialog>
+        <form>
+          <label for="title" class="text-input">
+            Title
+            <input id="title" name="title" />
+          </label>
 
-        <label for="pages" class="text-input">
-          Pages
-          <input id="pages" name="pages" />
-        </label>
+          <label for="author" class="text-input">
+            Author
+            <input id="author" name="author" />
+          </label>
 
-        <label for="read">
-          Have you read the book?
-          <input type="checkbox" id="read" name="read" />
-        </label>
+          <label for="pages" class="text-input">
+            Pages
+            <input id="pages" name="pages" />
+          </label>
 
-        <p>
-          <button type="submit">Add</button>
-        </p>
-      </form>
+          <label for="read">
+            Have you read the book?
+            <input type="checkbox" id="read" name="read" />
+          </label>
+
+          <p>
+            <button type="submit">Add</button>
+          </p>
+        </form>
+      </dialog>
 
       <div class="books"></div>
     </div>
