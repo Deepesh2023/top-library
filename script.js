@@ -100,14 +100,19 @@ function removeFromLibrary(e) {
 }
 
 // Code starts here
+
+// TODO: clear from if escape button is pressed
+
 const newBookButton = document.querySelector(".new-book");
 const newBookDialog = document.querySelector("dialog");
 const container = document.querySelector(".books");
 const newBookForm = document.querySelector("form");
+const cancelButton = document.querySelector(".cancel");
 
 const library = new Library();
 displayLibrary(library.getAllBooks());
 
 newBookButton.addEventListener("click", () => newBookDialog.showModal());
+cancelButton.addEventListener("click", () => newBookDialog.close());
 
 newBookForm.addEventListener("submit", submitHandler);

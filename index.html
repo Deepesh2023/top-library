@@ -17,17 +17,17 @@
         <form>
           <label for="title" class="text-input">
             Title
-            <input id="title" name="title" />
+            <input id="title" name="title" required autofocus />
           </label>
 
           <label for="author" class="text-input">
             Author
-            <input id="author" name="author" />
+            <input id="author" name="author" required />
           </label>
 
           <label for="pages" class="text-input">
             Pages
-            <input id="pages" name="pages" />
+            <input id="pages" name="pages" required />
           </label>
 
           <label for="read">
@@ -35,9 +35,10 @@
             <input type="checkbox" id="read" name="read" />
           </label>
 
-          <p>
+          <div>
             <button type="submit">Add</button>
-          </p>
+            <button type="reset" class="cancel">Cancel</button>
+          </div>
         </form>
       </dialog>
 
