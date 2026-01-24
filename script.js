@@ -31,8 +31,7 @@ function Library() {
     return books;
   };
 
-  this.remove = function (e) {
-    const id = e.target.dataset.id;
+  this.remove = function (id) {
     const index = books.findIndex((book) => book.id === id);
     books.splice(index, 1);
 
@@ -45,7 +44,7 @@ function displayLibrary(books) {
 
   if (removeButtonElements.length > 0)
     removeButtonElements.forEach((button) =>
-      button.removeEventListener("click", library.remove),
+      button.removeEventListener("click", removeFromLibrary),
     );
 
   container.replaceChildren();
@@ -77,7 +76,7 @@ function displayLibrary(books) {
 
   removeButtonElements = document.querySelectorAll(".remove-button");
   removeButtonElements.forEach((button) =>
-    button.addEventListener("click", library.remove),
+    button.addEventListener("click", removeFromLibrary),
   );
 }
 
@@ -92,6 +91,11 @@ function submitHandler(e) {
   library.add(title, author, pages, read);
 
   newBookForm.reset();
+}
+
+function removeFromLibrary(e) {
+  const id = e.target.dataset.id;
+  library.remove(id);
 }
 
 // Code starts here
