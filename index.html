@@ -8,32 +8,36 @@
     <title>Library</title>
   </head>
   <body>
-    <h1>Library</h1>
+    <div class="container">
+      <h1>Library</h1>
 
-    <form>
-      <label for="title">
-        Title
-        <input id="title" name="title" />
-      </label>
+      <form>
+        <label for="title" class="text-input">
+          Title
+          <input id="title" name="title" />
+        </label>
 
-      <label for="author">
-        Author
-        <input id="author" name="author" />
-      </label>
+        <label for="author" class="text-input">
+          Author
+          <input id="author" name="author" />
+        </label>
 
-      <label for="pages">
-        Pages
-        <input id="pages" name="pages" />
-      </label>
+        <label for="pages" class="text-input">
+          Pages
+          <input id="pages" name="pages" />
+        </label>
 
-      <label for="read">
-        Have you read the book?
-        <input type="checkbox" id="read" name="read" />
-      </label>
+        <label for="read">
+          Have you read the book?
+          <input type="checkbox" id="read" name="read" />
+        </label>
 
-      <button type="submit">Add</button>
-    </form>
+        <p>
+          <button type="submit">Add</button>
+        </p>
+      </form>
 
-    <div class="books"></div>
+      <div class="books"></div>
+    </div>
   </body>
 </html>
