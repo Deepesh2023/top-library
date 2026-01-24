@@ -87,6 +87,15 @@ html {
   margin: 0 auto;
 }
 
+.new-book {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  right: 20px;
+  bottom: 48px;
+}
+
 label,
 form > p {
   margin-top: 1em;
