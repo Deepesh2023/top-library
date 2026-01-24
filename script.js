@@ -31,7 +31,7 @@ function Library() {
     return books;
   };
 
-  remove = function (e) {
+  this.remove = function (e) {
     const id = e.target.dataset.id;
     const index = books.findIndex((book) => book.id === id);
     books.splice(index, 1);
@@ -45,7 +45,7 @@ function displayLibrary(books) {
 
   if (removeButtonElements.length > 0)
     removeButtonElements.forEach((button) =>
-      button.removeEventListener("click", remove.bind(this)),
+      button.removeEventListener("click", library.remove),
     );
 
   container.replaceChildren();
@@ -77,7 +77,7 @@ function displayLibrary(books) {
 
   removeButtonElements = document.querySelectorAll(".remove-button");
   removeButtonElements.forEach((button) =>
-    button.addEventListener("click", remove.bind(this)),
+    button.addEventListener("click", library.remove),
   );
 }
 
