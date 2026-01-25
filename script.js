@@ -109,8 +109,15 @@ const container = document.querySelector(".books");
 const newBookForm = document.querySelector("form");
 const cancelButton = document.querySelector(".cancel");
 
+const menuButton = document.querySelector(".menu");
+const menuList = document.querySelector(".menu-list");
+
 const library = new Library();
 displayLibrary(library.getAllBooks());
+
+menuButton.addEventListener("click", () => {
+  menuList.style.display = menuList.style.display === "none" ? "block" : "none";
+});
 
 newBookButton.addEventListener("click", () => newBookDialog.showModal());
 cancelButton.addEventListener("click", () => newBookDialog.close());

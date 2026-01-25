@@ -1,7 +1,6 @@
 # Library
 
 ## TODOs
-- Appbar with more settings
 - 3 dots menu
 - better list rendering
 - list items styling
@@ -9,6 +8,7 @@
 - book cover image
 - dialog box styling
 - dialog backdrop styling
+- floating button styling with icon
 - dark mode
 - responsive design
 - keyboard shortcut

@@ -136,6 +136,12 @@ table {
   border-spacing: 0;
 }
 
+button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
 /* fonts */
 html {
   font-family: sans-serif;
@@ -152,10 +158,19 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .appbar img {
   height: 20px;
+}
+
+.menu-list {
+  background-color: lightseagreen;
+  position: absolute;
+  right: 8px;
+  bottom: -16px;
+  display: none;
 }
 
 .container {
