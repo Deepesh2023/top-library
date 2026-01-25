@@ -172,6 +172,7 @@ header {
 
 .menu-list {
   background-color: lightseagreen;
+  box-shadow: var(--abosolute-shadow);
   position: absolute;
   right: 8px;
   bottom: -16px;
