@@ -159,29 +159,6 @@ html {
   height: 20px;
 }
 
-dialog {
-  border: none;
-  border-radius: var(--radius);
-}
-
-dialog::backdrop {
-  backdrop-filter: blur(4px);
-}
-
-form button {
-  padding: 0.4em 1.2em;
-  border-radius: var(--radius);
-}
-
-form button[type="submit"] {
-  background-color: lightcoral;
-  border: 1px solid lightcoral;
-}
-
-form button[class="cancel"] {
-  border: 1px solid black;
-}
-
 header {
   background-color: lightcoral;
 }
@@ -225,6 +202,29 @@ header {
   bottom: 48px;
 }
 
+dialog {
+  border: none;
+  border-radius: var(--radius);
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(4px);
+}
+
+form button {
+  padding: 0.4em 1.2em;
+  border-radius: var(--radius);
+}
+
+form button[type="submit"] {
+  background-color: lightcoral;
+  border: 1px solid lightcoral;
+}
+
+form button[class="cancel"] {
+  border: 1px solid black;
+}
+
 label,
 form > p {
   margin-top: 1em;
@@ -233,4 +233,9 @@ form > p {
 label[class="text-input"] {
   display: flex;
   flex-direction: column;
+}
+
+input:focus {
+  border: none;
+  outline: 2px solid lightcoral;
 }
