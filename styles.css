@@ -78,12 +78,25 @@ h6 {
 /* fonts */
 html {
   font-family: sans-serif;
+  font-size: 1rem;
 }
 
 /* styles */
+header {
+  background-color: lightcoral;
+}
+
+.appbar {
+  padding: 1em 0;
+}
+
 .container {
-  width: 80%;
   max-width: 960px;
+}
+
+.container,
+.appbar {
+  width: 90%;
   margin: 0 auto;
 }
 
