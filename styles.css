@@ -147,8 +147,15 @@ header {
   background-color: lightcoral;
 }
 
-header > h1 {
+.appbar {
   padding: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appbar img {
+  height: 20px;
 }
 
 .container {
@@ -156,7 +163,7 @@ header > h1 {
 }
 
 .container,
-header > h1 {
+.appbar {
   width: 90%;
   margin: 0 auto;
 }

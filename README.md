@@ -2,6 +2,7 @@
 
 ## TODOs
 - Appbar with more settings
+- 3 dots menu
 - better list rendering
 - list items styling
 - book page tracker
@@ -13,3 +14,4 @@
 - keyboard shortcut
 - setting to clear all books
 - help menu
+- credit icons
