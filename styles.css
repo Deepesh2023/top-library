@@ -149,6 +149,10 @@ html {
 }
 
 /* styles */
+.icon {
+  height: 20px;
+}
+
 header {
   background-color: lightcoral;
 }
@@ -159,10 +163,6 @@ header {
   justify-content: space-between;
   align-items: center;
   position: relative;
-}
-
-.appbar img {
-  height: 20px;
 }
 
 .menu-list {
@@ -187,6 +187,7 @@ header {
   border-radius: 50%;
   height: 40px;
   width: 40px;
+  background-color: lightcoral;
   position: absolute;
   right: 20px;
   bottom: 48px;
