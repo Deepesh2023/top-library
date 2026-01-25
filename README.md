@@ -8,7 +8,6 @@
 - book cover image
 - dialog box styling
 - dialog backdrop styling
-- floating button styling with icon
 - dark mode
 - responsive design
 - keyboard shortcut

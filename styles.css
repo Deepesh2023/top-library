@@ -145,6 +145,7 @@ button {
 /* variables */
 :root {
   --abosolute-shadow: -3px 3px 8px -4px;
+  --radius: 4px;
 }
 
 /* fonts */
@@ -156,6 +157,15 @@ html {
 /* styles */
 .icon {
   height: 20px;
+}
+
+dialog {
+  border: none;
+  border-radius: var(--radius);
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(4px);
 }
 
 header {
@@ -176,6 +186,7 @@ header {
   position: absolute;
   right: 8px;
   bottom: -16px;
+  border-radius: var(--radius);
   display: none;
 }
 
