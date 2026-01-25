@@ -1,1 +1,15 @@
-## Library
+# Library
+
+## TODOs
+- Appbar with more settings
+- better list rendering
+- list items styling
+- book page tracker
+- book cover image
+- dialog box styling
+- dialog backdrop styling
+- dark mode
+- responsive design
+- keyboard shortcut
+- setting to clear all books
+- help menu
