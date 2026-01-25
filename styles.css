@@ -168,6 +168,20 @@ dialog::backdrop {
   backdrop-filter: blur(4px);
 }
 
+form button {
+  padding: 0.4em 1.2em;
+  border-radius: var(--radius);
+}
+
+form button[type="submit"] {
+  background-color: lightcoral;
+  border: 1px solid lightcoral;
+}
+
+form button[class="cancel"] {
+  border: 1px solid black;
+}
+
 header {
   background-color: lightcoral;
 }
