@@ -111,6 +111,9 @@ function removeFromLibrary(e) {
 
   const list = container.querySelector("ul");
   const item = list.querySelector(`li[data-id="${id}"]`);
+  const button = item.querySelector(`button[data-id="${id}"]`);
+
+  button.removeEventListener("click", removeFromLibrary);
   item.remove();
 }
 
