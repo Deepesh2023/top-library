@@ -19,6 +19,8 @@ function Library() {
 
   const books = [];
 
+  books.push(new Book("42", "Book", "Author", 100, false));
+
   this.add = function (title, author, pages, read) {
     const id = crypto.randomUUID();
     const book = new Book(id, title, author, pages, read);
@@ -114,6 +116,7 @@ function removeFromLibrary(e) {
 
 function createBookCard(book) {
   const card = document.createElement("div");
+  card.classList.add("card");
 
   const removeButton = document.createElement("button");
   removeButton.innerHTML = "Remove";
@@ -128,13 +131,21 @@ function createBookCard(book) {
   updateButton.addEventListener("click", updateBookStatus);
 
   card.innerHTML = `
-    <h2>${book.title}</h2> 
-    <p>${book.description()}</p>
-    <div class="status">${book.read ? "Read" : "Not read"}</div>
+    <div>
+      <h2>${book.title}</h2> 
+      <p>${book.description()}</p>
+      <div class="status">${book.read ? "Read" : "Not read"}</div>
+    </div>
+
+    <img/>
   `;
 
-  card.appendChild(removeButton);
-  card.appendChild(updateButton);
+  const buttonsContainer = document.createElement("div");
+
+  buttonsContainer.appendChild(removeButton);
+  buttonsContainer.appendChild(updateButton);
+
+  card.appendChild(buttonsContainer);
 
   return card;
 }

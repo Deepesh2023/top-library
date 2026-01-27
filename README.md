@@ -2,7 +2,6 @@
 
 ## TODOs
 - 3 dots menu
-- better list rendering
 - list items styling
 - book page tracker
 - book cover image
@@ -14,3 +13,4 @@
 - setting to clear all books
 - help menu
 - credit icons
+- localstorage

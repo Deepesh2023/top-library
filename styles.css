@@ -239,3 +239,28 @@ input:focus {
   border: none;
   outline: 2px solid lightcoral;
 }
+
+.books ul {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.card {
+  padding: 1em;
+  border-radius: var(--radius);
+  box-shadow: -4px 3px 4px -4px;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 3fr 1fr;
+}
+
+.card img {
+  border: 1px solid black;
+  height: 150px;
+  width: 100px;
+
+  grid-row: 1 / -1;
+  grid-column: 2 / -1;
+}
