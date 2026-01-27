@@ -91,10 +91,10 @@ function updateBookStatus(e) {
   }
 
   const list = container.querySelector("ul");
-  const button = list.querySelector(`[class="update"]`);
+  const updateButton = list.querySelector(`.update`);
   const statusContainer = list.querySelector(".status");
 
-  button.innerHTML = read ? "Mark as unread" : "Mark as read";
+  updateButton.innerHTML = read ? "Mark as unread" : "Mark as read";
   statusContainer.innerHTML = read ? "Read" : "Unread";
 }
 
@@ -104,9 +104,11 @@ function removeFromLibrary(e) {
 
   const list = container.querySelector("ul");
   const item = list.querySelector(`li[data-id="${id}"]`);
-  const button = item.querySelector(`button[data-id="${id}"]`);
+  const removeButton = item.querySelector(".remove");
+  const updateButton = item.querySelector(".update");
 
-  button.removeEventListener("click", removeFromLibrary);
+  removeButton.removeEventListener("click", removeFromLibrary);
+  updateButton.removeEventListener("click", updateBookStatus);
   item.remove();
 }
 
@@ -116,6 +118,7 @@ function createBookCard(book) {
   const removeButton = document.createElement("button");
   removeButton.innerHTML = "Remove";
   removeButton.dataset.id = book.id;
+  removeButton.classList.add("remove");
   removeButton.addEventListener("click", removeFromLibrary);
 
   const updateButton = document.createElement("button");
