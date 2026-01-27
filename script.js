@@ -49,8 +49,10 @@ function displayLibrary(books) {
 
   const list = document.createElement("ul");
   for (const book of books) {
-    const item = createBookCard(book);
+    const item = document.createElement("li");
     item.dataset.id = book.id;
+    item.appendChild(createBookCard(book));
+
     list.appendChild(item);
   }
 
@@ -69,6 +71,18 @@ function addToLibrary(book) {
   item.dataset.id = book.id;
   item.appendChild(createBookCard(book));
   list.appendChild(item);
+}
+
+function removeFromLibrary(e) {
+  const id = e.target.dataset.id;
+  library.remove(id);
+
+  const list = container.querySelector("ul");
+  const item = list.querySelector(`li[data-id="${id}"]`);
+  const button = item.querySelector(`button[data-id="${id}"]`);
+
+  button.removeEventListener("click", removeFromLibrary);
+  item.remove();
 }
 
 function createBookCard(book) {
@@ -103,18 +117,6 @@ function submitHandler(e) {
 
   newBookForm.reset();
   newBookDialog.close();
-}
-
-function removeFromLibrary(e) {
-  const id = e.target.dataset.id;
-  library.remove(id);
-
-  const list = container.querySelector("ul");
-  const item = list.querySelector(`li[data-id="${id}"]`);
-  const button = item.querySelector(`button[data-id="${id}"]`);
-
-  button.removeEventListener("click", removeFromLibrary);
-  item.remove();
 }
 
 // Code starts here
