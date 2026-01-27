@@ -31,6 +31,15 @@ function Library() {
     return books;
   };
 
+  this.updateBookStatus = function (id) {
+    for (const book of books) {
+      if (book.id === id) {
+        book.read = !book.read;
+        return book.read;
+      }
+    }
+  };
+
   this.remove = function (id) {
     const index = books.findIndex((book) => book.id === id);
     books.splice(index, 1);
@@ -73,6 +82,22 @@ function addToLibrary(book) {
   list.appendChild(item);
 }
 
+function updateBookStatus(e) {
+  const id = e.target.dataset.id;
+
+  const read = library.updateBookStatus(id);
+  if (read === undefined) {
+    return;
+  }
+
+  const list = container.querySelector("ul");
+  const button = list.querySelector(`[class="update"]`);
+  const statusContainer = list.querySelector(".status");
+
+  button.innerHTML = read ? "Mark as unread" : "Mark as read";
+  statusContainer.innerHTML = read ? "Read" : "Unread";
+}
+
 function removeFromLibrary(e) {
   const id = e.target.dataset.id;
   library.remove(id);
@@ -93,13 +118,20 @@ function createBookCard(book) {
   removeButton.dataset.id = book.id;
   removeButton.addEventListener("click", removeFromLibrary);
 
+  const updateButton = document.createElement("button");
+  updateButton.innerHTML = book.read ? "Mark as unread" : "Mark as read";
+  updateButton.dataset.id = book.id;
+  updateButton.classList.add("update");
+  updateButton.addEventListener("click", updateBookStatus);
+
   card.innerHTML = `
     <h2>${book.title}</h2> 
     <p>${book.description()}</p>
-    <div>${book.read ? "Read" : "Not read"}</div>
+    <div class="status">${book.read ? "Read" : "Not read"}</div>
   `;
 
   card.appendChild(removeButton);
+  card.appendChild(updateButton);
 
   return card;
 }
