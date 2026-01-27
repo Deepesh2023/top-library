@@ -50,6 +50,7 @@ function displayLibrary(books) {
   const list = document.createElement("ul");
   for (const book of books) {
     const item = createBookCard(book);
+    item.dataset.id = book.id;
     list.appendChild(item);
   }
 
@@ -64,19 +65,27 @@ function addToLibrary(book) {
     container.appendChild(list);
   }
 
-  const item = createBookCard(book);
+  const item = document.createElement("li");
+  item.dataset.id = book.id;
+  item.appendChild(createBookCard(book));
   list.appendChild(item);
 }
 
 function createBookCard(book) {
   const card = document.createElement("div");
+
+  const removeButton = document.createElement("button");
+  removeButton.innerHTML = "Remove";
+  removeButton.dataset.id = book.id;
+  removeButton.addEventListener("click", removeFromLibrary);
+
   card.innerHTML = `
     <h2>${book.title}</h2> 
     <p>${book.description()}</p>
     <div>${book.read ? "Read" : "Not read"}</div>
-    <button>Mark as read</button>
-    <button class="remove-button" data-id="${book.id}">Remove</button>
   `;
+
+  card.appendChild(removeButton);
 
   return card;
 }
@@ -99,6 +108,10 @@ function submitHandler(e) {
 function removeFromLibrary(e) {
   const id = e.target.dataset.id;
   library.remove(id);
+
+  const list = container.querySelector("ul");
+  const item = list.querySelector(`li[data-id="${id}"]`);
+  item.remove();
 }
 
 // Code starts here
