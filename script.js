@@ -49,12 +49,10 @@ function Library() {
 }
 
 function displayLibrary(books) {
-  container.replaceChildren();
-
   if (books.length === 0) {
     const paragraph = document.createElement("p");
     paragraph.innerHTML = "No books";
-    container.appendChild(paragraph);
+    container.replaceChildren(paragraph);
     return;
   }
 
@@ -67,15 +65,14 @@ function displayLibrary(books) {
     list.appendChild(item);
   }
 
-  container.appendChild(list);
+  container.replaceChildren(list);
 }
 
 function addToLibrary(book) {
   let list = container.querySelector("ul");
   if (!list) {
     list = document.createElement("ul");
-    container.replaceChildren();
-    container.appendChild(list);
+    container.replaceChildren(list);
   }
 
   const item = document.createElement("li");
@@ -129,7 +126,7 @@ function createBookCard(book) {
 
   const updateButton = document.createElement("button");
   updateButton.ariaLabel = book.read ? "Mark as unread" : "Mark as read";
-  updateButton.innerHTML = `<img data-id=${book.id} class="icon" src=${book.read ? "icons/checkbox-marked-circle-outline.svg" : "icons/radiobox-blank.svg"} />`;
+  updateButton.innerHTML = `<img data-id=${book.id} class="icon" src=icons/${book.read ? "checkbox-marked-circle-outline.svg" : "radiobox-blank.svg"} />`;
   updateButton.classList.add("update");
   updateButton.addEventListener("click", updateBookStatus);
 
@@ -144,6 +141,7 @@ function createBookCard(book) {
   `;
 
   const buttonsContainer = document.createElement("div");
+  buttonsContainer.classList.add("book-options")
 
   buttonsContainer.appendChild(updateButton);
   buttonsContainer.appendChild(removeButton);
