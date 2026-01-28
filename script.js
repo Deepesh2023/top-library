@@ -29,6 +29,10 @@ function Library() {
     return book;
   };
 
+  this.getBookCount = function () {
+    return books.length;
+  };
+
   this.getAllBooks = function () {
     return books;
   };
@@ -111,6 +115,12 @@ function removeFromLibrary(e) {
   removeButton.removeEventListener("click", removeFromLibrary);
   updateButton.removeEventListener("click", updateBookStatus);
   item.remove();
+
+  if (library.getBookCount() === 0) {
+    const paragraph = document.createElement("p");
+    paragraph.innerText = "No books";
+    container.replaceChildren(paragraph);
+  }
 }
 
 function createBookCard(book) {

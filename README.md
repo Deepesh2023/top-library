@@ -14,3 +14,4 @@
 - help menu
 - credit icons
 - localstorage
+- delete confirmation
