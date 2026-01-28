@@ -155,10 +155,31 @@ html {
   font-size: 1rem;
 }
 
+h1,
+h2 {
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+.author {
+  font-weight: bold;
+}
+
 /* styles */
 .icon {
   height: 28px;
   padding: 2px;
+}
+
+p {
+  margin-top: 0.5em;
 }
 
 header {
@@ -248,7 +269,7 @@ input:focus {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
-.card {
+.book {
   padding: 1em;
   border-radius: var(--radius);
   box-shadow: -4px 3px 4px -4px;
@@ -256,6 +277,16 @@ input:focus {
   display: grid;
   grid-template-rows: 120px 40px;
   grid-template-columns: 3fr 1fr;
+}
+
+.description {
+  grid-row: 1 / 2;
+  grid-column: 1;
+}
+
+.options {
+  grid-row: 2;
+  grid-column: 1;
 }
 
 .cover {

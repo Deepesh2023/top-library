@@ -9,10 +9,6 @@ function Book(id, title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.description = function () {
-  return `by ${this.author}, ${this.pages} pages`;
-};
-
 function Library() {
   if (!new.target)
     throw Error("You must use the 'new' operator to call the constructor");
@@ -125,7 +121,7 @@ function removeFromLibrary(e) {
 
 function createBookCard(book) {
   const card = document.createElement("div");
-  card.classList.add("card");
+  card.classList.add("book");
 
   const removeButton = document.createElement("button");
   removeButton.ariaLabel = "Remove";
@@ -140,9 +136,9 @@ function createBookCard(book) {
   updateButton.addEventListener("click", updateBookStatus);
 
   card.innerHTML = `
-    <div>
+    <div class="description">
       <h2>${book.title}</h2> 
-      <p>${book.description()}</p>
+      <p>by <span class="author">${book.author}</span>, ${book.pages} pages</p>
       <span class="status ${book.read ? "read" : "unread"}">${book.read ? "read" : "unread"}</span>
     </div>
 
@@ -150,7 +146,7 @@ function createBookCard(book) {
   `;
 
   const buttonsContainer = document.createElement("div");
-  buttonsContainer.classList.add("book-options");
+  buttonsContainer.classList.add("options");
 
   buttonsContainer.appendChild(updateButton);
   buttonsContainer.appendChild(removeButton);
