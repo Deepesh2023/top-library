@@ -275,9 +275,13 @@ input:focus {
 }
 
 .read {
-  background-color: green;
+  border: 1px solid #039e5d;
+  color: #039e5d;
+  background-color: #73e6a7;
 }
 
 .unread {
-  background-color: orange;
+  border: 1px solid #9e4403;
+  color: #9e4403;
+  background-color: #e69973;
 }
