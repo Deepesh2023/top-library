@@ -98,7 +98,7 @@ function updateBookStatus(e) {
 
   statusContainer.classList.remove(read ? "unread" : "read");
 
-  updateButton.innerHTML = read ? "Mark as unread" : "Mark as read";
+  updateButton.innerHTML = `<img data-id=${id} class="icon" src=${read ? "icons/checkbox-marked-circle-outline.svg" : "icons/radiobox-blank.svg"} />`;
   statusContainer.innerHTML = read ? "read" : "unread";
   statusContainer.classList.add(read ? "read" : "unread");
 }
@@ -123,13 +123,13 @@ function createBookCard(book) {
 
   const removeButton = document.createElement("button");
   removeButton.ariaLabel = "Remove";
-  removeButton.dataset.id = book.id;
+  removeButton.innerHTML = `<img data-id=${book.id} src="icons/trash-can.svg" class="icon"/>`;
   removeButton.classList.add("remove");
   removeButton.addEventListener("click", removeFromLibrary);
 
   const updateButton = document.createElement("button");
-  updateButton.innerHTML = book.read ? "Mark as unread" : "Mark as read";
-  updateButton.dataset.id = book.id;
+  updateButton.ariaLabel = book.read ? "Mark as unread" : "Mark as read";
+  updateButton.innerHTML = `<img data-id=${book.id} class="icon" src=${book.read ? "icons/checkbox-marked-circle-outline.svg" : "icons/radiobox-blank.svg"} />`;
   updateButton.classList.add("update");
   updateButton.addEventListener("click", updateBookStatus);
 
@@ -142,8 +142,6 @@ function createBookCard(book) {
 
     <img class="cover"/>
   `;
-
-  removeButton.innerHTML = `<img src="icons/trash-can.svg" class="icon"/>`;
 
   const buttonsContainer = document.createElement("div");
 
