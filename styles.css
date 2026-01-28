@@ -140,6 +140,7 @@ button {
   border: none;
   background: none;
   padding: 0;
+  cursor: pointer;
 }
 
 /* variables */
@@ -263,4 +264,20 @@ input:focus {
 
   grid-row: 1 / -1;
   grid-column: 2 / -1;
+}
+
+.status {
+  display: block;
+  margin-top: 0.5em;
+  width: max-content;
+  padding: 0.2em 1em;
+  border-radius: 20px;
+}
+
+.read {
+  background-color: green;
+}
+
+.unread {
+  background-color: orange;
 }

@@ -96,8 +96,11 @@ function updateBookStatus(e) {
   const updateButton = list.querySelector(`.update`);
   const statusContainer = list.querySelector(".status");
 
+  statusContainer.classList.remove(read ? "unread" : "read");
+
   updateButton.innerHTML = read ? "Mark as unread" : "Mark as read";
   statusContainer.innerHTML = read ? "Read" : "Unread";
+  statusContainer.classList.add(read ? "read" : "unread");
 }
 
 function removeFromLibrary(e) {
@@ -134,7 +137,7 @@ function createBookCard(book) {
     <div>
       <h2>${book.title}</h2> 
       <p>${book.description()}</p>
-      <div class="status">${book.read ? "Read" : "Not read"}</div>
+      <span class="status ${book.read ? "read" : "unread"}">${book.read ? "Read" : "Not read"}</span>
     </div>
 
     <img/>
