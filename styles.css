@@ -254,7 +254,7 @@ input:focus {
   box-shadow: -4px 3px 4px -4px;
 
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 3fr 1fr;
   grid-template-columns: 3fr 1fr;
 }
 

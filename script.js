@@ -89,9 +89,9 @@ function updateBookStatus(e) {
     return;
   }
 
-  const list = container.querySelector("ul");
-  const updateButton = list.querySelector(`.update`);
-  const statusContainer = list.querySelector(".status");
+  const item = container.querySelector(`li[data-id="${id}"]`);
+  const updateButton = item.querySelector(`.update`);
+  const statusContainer = item.querySelector(".status");
 
   statusContainer.classList.remove(read ? "unread" : "read");
 
@@ -141,7 +141,7 @@ function createBookCard(book) {
   `;
 
   const buttonsContainer = document.createElement("div");
-  buttonsContainer.classList.add("book-options")
+  buttonsContainer.classList.add("book-options");
 
   buttonsContainer.appendChild(updateButton);
   buttonsContainer.appendChild(removeButton);
