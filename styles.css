@@ -157,7 +157,8 @@ html {
 
 /* styles */
 .icon {
-  height: 20px;
+  height: 28px;
+  padding: 2px;
 }
 
 header {
@@ -257,7 +258,7 @@ input:focus {
   grid-template-columns: 3fr 1fr;
 }
 
-.card img {
+.cover {
   border: 1px solid black;
   height: 150px;
   width: 100px;

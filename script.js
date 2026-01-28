@@ -122,7 +122,7 @@ function createBookCard(book) {
   card.classList.add("card");
 
   const removeButton = document.createElement("button");
-  removeButton.innerHTML = "Remove";
+  removeButton.ariaLabel = "Remove";
   removeButton.dataset.id = book.id;
   removeButton.classList.add("remove");
   removeButton.addEventListener("click", removeFromLibrary);
@@ -140,13 +140,15 @@ function createBookCard(book) {
       <span class="status ${book.read ? "read" : "unread"}">${book.read ? "read" : "unread"}</span>
     </div>
 
-    <img/>
+    <img class="cover"/>
   `;
+
+  removeButton.innerHTML = `<img src="icons/trash-can.svg" class="icon"/>`;
 
   const buttonsContainer = document.createElement("div");
 
-  buttonsContainer.appendChild(removeButton);
   buttonsContainer.appendChild(updateButton);
+  buttonsContainer.appendChild(removeButton);
 
   card.appendChild(buttonsContainer);
 
