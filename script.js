@@ -104,8 +104,7 @@ function removeFromLibrary(e) {
   const id = e.target.dataset.id;
   library.remove(id);
 
-  const list = container.querySelector("ul");
-  const item = list.querySelector(`li[data-id="${id}"]`);
+  const item = container.querySelector(`li[data-id="${id}"]`);
   const removeButton = item.querySelector(".remove");
   const updateButton = item.querySelector(".update");
 
