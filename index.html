@@ -30,30 +30,45 @@
 
       <dialog>
         <form>
-          <label for="title" class="text-input">
-            Title
-            <input id="title" name="title" required autofocus />
-          </label>
+          <p>
+            <label for="title" class="text-input">
+              Title*
+              <input id="title" name="title" required autofocus />
+            </label>
+          </p>
 
-          <label for="author" class="text-input">
-            Author
-            <input id="author" name="author" required />
-          </label>
+          <p>
+            <label for="author" class="text-input">
+              Author*
+              <input id="author" name="author" required />
+            </label>
+          </p>
 
-          <label for="pages" class="text-input">
-            Pages
-            <input id="pages" name="pages" required />
-          </label>
+          <p>
+            <label for="pages" class="text-input">
+              Pages*
+              <input id="pages" name="pages" required />
+            </label>
+          </p>
 
-          <label for="read">
-            Have you read the book?
-            <input type="checkbox" id="read" name="read" />
-          </label>
+          <p>
+            <label for="cover" class="text-input">
+              Book cover URL
+              <input type="url" id="cover" />
+            </label>
+          </p>
 
-          <div>
+          <p>
+            <label for="read">
+              Have you read the book?
+              <input type="checkbox" id="read" name="read" />
+            </label>
+          </p>
+
+          <p>
             <button type="submit">Add</button>
             <button type="reset" class="cancel">Cancel</button>
-          </div>
+          </p>
         </form>
       </dialog>
 

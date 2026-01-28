@@ -169,7 +169,7 @@ h2 {
 }
 
 .author {
-  font-weight: bold;
+  font-style: italic;
 }
 
 /* styles */
@@ -248,14 +248,10 @@ form button[class="cancel"] {
   border: 1px solid black;
 }
 
-label,
-form > p {
-  margin-top: 1em;
-}
-
 label[class="text-input"] {
   display: flex;
   flex-direction: column;
+  gap: 4px;
 }
 
 input:focus {
