@@ -131,6 +131,7 @@ function removeFromLibrary(id) {
     container.replaceChildren(paragraph);
   }
 
+  removeBookForm.dataset.id = null;
   removeBookDialog.close();
 }
 
@@ -142,7 +143,7 @@ function createBookCard(book) {
   removeButton.ariaLabel = "Remove";
   removeButton.innerHTML = `<img data-id=${book.id} src="icons/trash-can.svg" class="icon"/>`;
   removeButton.classList.add("remove");
-  removeButton.addEventListener("click", confirmBookRemove);
+  removeButton.addEventListener("click", showConfirmationWindow);
 
   const updateButton = document.createElement("button");
   updateButton.ariaLabel = book.read ? "Mark as unread" : "Mark as read";
@@ -193,7 +194,7 @@ function submitHandler(e) {
   newBookDialog.close();
 }
 
-function confirmBookRemove(e) {
+function showConfirmationWindow(e) {
   const id = e.target.dataset.id;
   const book = library.getBook(id);
 

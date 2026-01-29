@@ -248,6 +248,11 @@ form button[class="cancel"] {
   border: 1px solid black;
 }
 
+form p:last-of-type {
+  margin-top: 2em;
+  vertical-align: bottom;
+}
+
 label[class="text-input"] {
   display: flex;
   flex-direction: column;
