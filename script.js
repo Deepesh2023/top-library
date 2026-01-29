@@ -242,4 +242,7 @@ cancelNewBookButton.addEventListener("click", () => newBookDialog.close());
 newBookForm.addEventListener("submit", submitHandler);
 
 removeBookForm.addEventListener("submit", confrimHandler);
-cancelRemoveButton.addEventListener("click", () => removeBookDialog.close());
+cancelRemoveButton.addEventListener("click", (e) => {
+  e.target.dataset = null;
+  removeBookDialog.close();
+});
