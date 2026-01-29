@@ -172,9 +172,9 @@ function submitHandler(e) {
   const title = e.target.title.value.trim();
 
   let coverImage = null;
-  const url = e.target.cover.value.trim();
-  if (url.length > 0) {
-    coverImage = url;
+  const imageUrl = e.target.cover.value.trim();
+  if (imageUrl.length > 0) {
+    coverImage = imageUrl;
   }
 
   const author = e.target.author.value.trim();
