@@ -244,7 +244,7 @@ form button[type="submit"] {
   border: 1px solid lightcoral;
 }
 
-form button[class="cancel"] {
+form .cancel {
   border: 1px solid black;
 }
 
