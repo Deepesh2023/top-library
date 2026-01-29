@@ -114,18 +114,7 @@ function updateBookStatus(e) {
   statusContainer.classList.add(read ? "read" : "unread");
 }
 
-function removeFromLibrary(e) {
-  const id = e.target.dataset.id;
-
-  const book = library.getBook(id);
-  const response = window.confirm(
-    `Are you sure you want to remove ${book.title}?`,
-  );
-
-  if (!response) {
-    return;
-  }
-
+function removeFromLibrary(id) {
   library.remove(id);
 
   const item = container.querySelector(`li[data-id="${id}"]`);
@@ -141,6 +130,8 @@ function removeFromLibrary(e) {
     paragraph.innerText = "No books";
     container.replaceChildren(paragraph);
   }
+
+  removeBookDialog.close();
 }
 
 function createBookCard(book) {
@@ -151,7 +142,7 @@ function createBookCard(book) {
   removeButton.ariaLabel = "Remove";
   removeButton.innerHTML = `<img data-id=${book.id} src="icons/trash-can.svg" class="icon"/>`;
   removeButton.classList.add("remove");
-  removeButton.addEventListener("click", removeFromLibrary);
+  removeButton.addEventListener("click", confirmBookRemove);
 
   const updateButton = document.createElement("button");
   updateButton.ariaLabel = book.read ? "Mark as unread" : "Mark as read";
@@ -202,6 +193,24 @@ function submitHandler(e) {
   newBookDialog.close();
 }
 
+function confirmBookRemove(e) {
+  const id = e.target.dataset.id;
+  const book = library.getBook(id);
+
+  const paragraph = document.querySelector(".confirm-message");
+  paragraph.innerText = `Are you sure you want to delete ${book.title}?`;
+  removeBookDialog.prepend(paragraph);
+
+  removeBookForm.dataset.id = id;
+  removeBookDialog.showModal();
+}
+
+function confrimHandler(e) {
+  e.preventDefault();
+  const id = e.target.dataset.id;
+  removeFromLibrary(id);
+}
+
 // Code starts here
 
 // TODO: clear from if escape button is pressed
@@ -214,7 +223,7 @@ const newBookForm = document.querySelector(".new-book-form");
 const cancelNewBookButton = document.querySelector(".cancel-new-book");
 
 const removeBookDialog = document.querySelector(".remove-book-dialog");
-const removeBookForm = document.querySelector(".remove-button-form");
+const removeBookForm = document.querySelector(".remove-book-form");
 const cancelRemoveButton = document.querySelector(".cancel-remove-book");
 
 const menuButton = document.querySelector(".menu");
@@ -229,5 +238,7 @@ menuButton.addEventListener("click", () => {
 
 newBookButton.addEventListener("click", () => newBookDialog.showModal());
 cancelNewBookButton.addEventListener("click", () => newBookDialog.close());
-
 newBookForm.addEventListener("submit", submitHandler);
+
+removeBookForm.addEventListener("submit", confrimHandler);
+cancelRemoveButton.addEventListener("click", () => removeBookDialog.close());
