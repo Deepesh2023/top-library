@@ -35,6 +35,10 @@ function Library() {
     return book;
   };
 
+  this.getBook = function (id) {
+    return books.find((book) => book.id === id);
+  };
+
   this.getBookCount = function () {
     return books.length;
   };
@@ -112,6 +116,16 @@ function updateBookStatus(e) {
 
 function removeFromLibrary(e) {
   const id = e.target.dataset.id;
+
+  const book = library.getBook(id);
+  const response = window.confirm(
+    `Are you sure you want to remove ${book.title}?`,
+  );
+
+  if (!response) {
+    return;
+  }
+
   library.remove(id);
 
   const item = container.querySelector(`li[data-id="${id}"]`);
@@ -197,7 +211,11 @@ const container = document.querySelector(".books");
 const newBookButton = document.querySelector(".new-book-button");
 const newBookDialog = document.querySelector(".new-book-dialog");
 const newBookForm = document.querySelector(".new-book-form");
-const cancelButton = document.querySelector(".cancel");
+const cancelNewBookButton = document.querySelector(".cancel-new-book");
+
+const removeBookDialog = document.querySelector(".remove-book-dialog");
+const removeBookForm = document.querySelector(".remove-button-form");
+const cancelRemoveButton = document.querySelector(".cancel-remove-book");
 
 const menuButton = document.querySelector(".menu");
 const menuList = document.querySelector(".menu-list");
@@ -210,6 +228,6 @@ menuButton.addEventListener("click", () => {
 });
 
 newBookButton.addEventListener("click", () => newBookDialog.showModal());
-cancelButton.addEventListener("click", () => newBookDialog.close());
+cancelNewBookButton.addEventListener("click", () => newBookDialog.close());
 
 newBookForm.addEventListener("submit", submitHandler);
