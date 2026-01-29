@@ -194,9 +194,9 @@ function submitHandler(e) {
 
 const container = document.querySelector(".books");
 
-const newBookButton = document.querySelector(".new-book");
-const newBookDialog = document.querySelector("dialog");
-const newBookForm = document.querySelector("form");
+const newBookButton = document.querySelector(".new-book-button");
+const newBookDialog = document.querySelector(".new-book-dialog");
+const newBookForm = document.querySelector(".new-book-form");
 const cancelButton = document.querySelector(".cancel");
 
 const menuButton = document.querySelector(".menu");

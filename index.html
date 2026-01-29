@@ -23,54 +23,54 @@
       </div>
     </header>
 
+    <dialog class="new-book-dialog">
+      <form class="new-book-form">
+        <p>
+          <label for="title" class="text-input">
+            Title*
+            <input id="title" name="title" required autofocus />
+          </label>
+        </p>
+
+        <p>
+          <label for="author" class="text-input">
+            Author*
+            <input id="author" name="author" required />
+          </label>
+        </p>
+
+        <p>
+          <label for="pages" class="text-input">
+            Pages*
+            <input id="pages" name="pages" required />
+          </label>
+        </p>
+
+        <p>
+          <label for="cover" class="text-input">
+            Book cover URL
+            <input type="url" id="cover" />
+          </label>
+        </p>
+
+        <p>
+          <label for="read">
+            Have you read the book?
+            <input type="checkbox" id="read" name="read" />
+          </label>
+        </p>
+
+        <p>
+          <button type="submit">Add</button>
+          <button type="reset" class="cancel">Cancel</button>
+        </p>
+      </form>
+    </dialog>
+
     <div class="container">
-      <button class="new-book" aria-label="add book">
+      <button class="new-book-button" aria-label="add book">
         <img src="icons/plus.svg" class="icon" />
       </button>
-
-      <dialog>
-        <form>
-          <p>
-            <label for="title" class="text-input">
-              Title*
-              <input id="title" name="title" required autofocus />
-            </label>
-          </p>
-
-          <p>
-            <label for="author" class="text-input">
-              Author*
-              <input id="author" name="author" required />
-            </label>
-          </p>
-
-          <p>
-            <label for="pages" class="text-input">
-              Pages*
-              <input id="pages" name="pages" required />
-            </label>
-          </p>
-
-          <p>
-            <label for="cover" class="text-input">
-              Book cover URL
-              <input type="url" id="cover" />
-            </label>
-          </p>
-
-          <p>
-            <label for="read">
-              Have you read the book?
-              <input type="checkbox" id="read" name="read" />
-            </label>
-          </p>
-
-          <p>
-            <button type="submit">Add</button>
-            <button type="reset" class="cancel">Cancel</button>
-          </p>
-        </form>
-      </dialog>
 
       <div class="books"></div>
     </div>
