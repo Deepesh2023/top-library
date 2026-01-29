@@ -1,9 +1,10 @@
-function Book(id, title, author, pages, read) {
+function Book(id, title, coverImage, author, pages, read) {
   if (!new.target)
     throw Error("You must use the 'new' operator to call the constructor");
 
   this.id = id;
   this.title = title;
+  this.coverImage = coverImage;
   this.author = author;
   this.pages = pages;
   this.read = read;
@@ -15,11 +16,20 @@ function Library() {
 
   const books = [];
 
-  books.push(new Book("42", "Book", "Author", 100, false));
+  books.push(
+    new Book(
+      (id = "42"),
+      (title = "Book"),
+      (coverImage = null),
+      (author = "Author"),
+      (pages = 100),
+      (read = false),
+    ),
+  );
 
-  this.add = function (title, author, pages, read) {
+  this.add = function (title, coverImage, author, pages, read) {
     const id = crypto.randomUUID();
-    const book = new Book(id, title, author, pages, read);
+    const book = new Book(id, title, coverImage, author, pages, read);
     books.push(book);
 
     return book;
@@ -142,7 +152,7 @@ function createBookCard(book) {
       <span class="status ${book.read ? "read" : "unread"}">${book.read ? "read" : "unread"}</span>
     </div>
 
-    <img class="cover"/>
+    <img class="cover" src=${book.coverImage ? book.coverImage : "/images/book.png"} />
   `;
 
   const buttonsContainer = document.createElement("div");
@@ -160,11 +170,18 @@ function submitHandler(e) {
   e.preventDefault();
 
   const title = e.target.title.value.trim();
+
+  let coverImage = null;
+  const url = e.target.cover.value.trim();
+  if (url.length > 0) {
+    coverImage = url;
+  }
+
   const author = e.target.author.value.trim();
   const pages = e.target.pages.value.trim();
   const read = e.target.read.checked;
 
-  const book = library.add(title, author, pages, read);
+  const book = library.add(title, coverImage, author, pages, read);
   addToLibrary(book);
 
   newBookForm.reset();
