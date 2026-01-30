@@ -233,13 +233,7 @@ const menuList = document.querySelector(".menu-list");
 const library = new Library();
 displayLibrary(library.getAllBooks());
 
-menuButton.addEventListener("click", () => {
-  console.log(menuButton.checked);
-});
-
 document.addEventListener("click", (e) => {
-  e.stopPropagation();
-
   if (menuButton.checked && e.target !== menuButton) {
     menuButton.checked = false;
   }
