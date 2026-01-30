@@ -60,6 +60,13 @@ function Library() {
     const index = books.findIndex((book) => book.id === id);
     books.splice(index, 1);
   };
+
+  this.clear = function () {
+    if (books.length > 0) {
+      return;
+    }
+    books.splice(0, books.length);
+  };
 }
 
 function displayLibrary(books) {
@@ -212,6 +219,18 @@ function confrimHandler(e) {
   removeFromLibrary(id);
 }
 
+function clearLibrary(e) {
+  e.preventDefault();
+
+  library.clear();
+
+  const paragraph = document.createElement("p");
+  paragraph.innerText = "No books";
+  container.replaceChildren(paragraph);
+
+  clearLibraryDialog.close();
+}
+
 // Code starts here
 
 // TODO: clear from if escape button is pressed
@@ -226,6 +245,11 @@ const cancelNewBookButton = document.querySelector(".cancel-new-book");
 const removeBookDialog = document.querySelector(".remove-book-dialog");
 const removeBookForm = document.querySelector(".remove-book-form");
 const cancelRemoveButton = document.querySelector(".cancel-remove-book");
+
+const clearLibraryButton = document.querySelector(".clear-library-button");
+const clearLibraryDialog = document.querySelector(".clear-library-dialog");
+const clearLibraryForm = document.querySelector(".clear-library-form");
+const cancelClearLibrary = document.querySelector(".cancel-clear-library");
 
 const menuButton = document.querySelector("#menu");
 const menuList = document.querySelector(".menu-list");
@@ -248,3 +272,9 @@ cancelRemoveButton.addEventListener("click", (e) => {
   e.target.dataset = null;
   removeBookDialog.close();
 });
+
+clearLibraryButton.addEventListener("click", () =>
+  clearLibraryDialog.showModal(),
+);
+clearLibraryForm.addEventListener("submit", clearLibrary);
+cancelClearLibrary.addEventListener("click", () => clearLibraryDialog.close());

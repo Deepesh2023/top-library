@@ -1,11 +1,11 @@
 # Library
 
 ## TODOs
-- 3 dots menu
 - dark mode
 - responsive design
 - keyboard shortcut
 - setting to clear all books
+- about page
 - help menu
 - credit icons
 - localstorage

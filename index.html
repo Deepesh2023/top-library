@@ -16,7 +16,7 @@
           <img src="icons/dots-vertical.svg" class="icon" />
 
           <ul class="menu-list">
-            <li><button>Clear library</button></li>
+            <li><button class="clear-library-button">Clear library</button></li>
             <li><a>About</a></li>
           </ul>
 
@@ -76,6 +76,19 @@
         <p>
           <button type="submit">Remove</button>
           <button type="reset" class="cancel-remove-book cancel">Cancel</button>
+        </p>
+      </form>
+    </dialog>
+
+    <dialog class="clear-library-dialog">
+      <form class="clear-library-form">
+        <p>Are you sure you want to clear the library?</p>
+
+        <p>
+          <button type="submit">Remove</button>
+          <button type="reset" class="cancel-clear-library cancel">
+            Cancel
+          </button>
         </p>
       </form>
     </dialog>
