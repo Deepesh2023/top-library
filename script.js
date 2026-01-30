@@ -227,14 +227,22 @@ const removeBookDialog = document.querySelector(".remove-book-dialog");
 const removeBookForm = document.querySelector(".remove-book-form");
 const cancelRemoveButton = document.querySelector(".cancel-remove-book");
 
-const menuButton = document.querySelector(".menu");
+const menuButton = document.querySelector("#menu");
 const menuList = document.querySelector(".menu-list");
 
 const library = new Library();
 displayLibrary(library.getAllBooks());
 
 menuButton.addEventListener("click", () => {
-  menuList.style.display = menuList.style.display === "none" ? "block" : "none";
+  console.log(menuButton.checked);
+});
+
+document.addEventListener("click", (e) => {
+  e.stopPropagation();
+
+  if (menuButton.checked && e.target !== menuButton) {
+    menuButton.checked = false;
+  }
 });
 
 newBookButton.addEventListener("click", () => newBookDialog.showModal());

@@ -207,6 +207,10 @@ header {
   width: 100px;
 }
 
+.menu-list:has(~ input:checked) {
+  display: block;
+}
+
 .menu-list li:last-of-type {
   margin-top: 1em;
 }
