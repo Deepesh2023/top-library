@@ -195,13 +195,20 @@ header {
 }
 
 .menu-list {
-  background-color: lightseagreen;
+  background-color: white;
   box-shadow: var(--abosolute-shadow);
   position: absolute;
   right: 8px;
-  bottom: -16px;
+  bottom: -60px;
   border-radius: var(--radius);
   display: none;
+
+  padding: 1em;
+  width: 100px;
+}
+
+.menu-list li:last-of-type {
+  margin-top: 1em;
 }
 
 .container {
