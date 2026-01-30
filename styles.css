@@ -143,9 +143,35 @@ button {
   cursor: pointer;
 }
 
+/* colors */
+:root {
+  --primary-color: #c7a11a;
+  --background-color: #e3d39a;
+  --card-color: #f5e5ab;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #211b05;
+    --card-color: #42360a;
+  }
+
+  .container h2,
+  .container p,
+  .menu-list,
+  button,
+  dialog {
+    color: #ebe7e1;
+  }
+
+  button[type="submit"] {
+    color: var(--background-color);
+  }
+}
+
 /* variables */
 :root {
-  --abosolute-shadow: -3px 3px 8px -4px;
+  --abosolute-shadow: -3px 3px 8px -4px black;
   --radius: 4px;
 }
 
@@ -173,9 +199,15 @@ h2 {
 }
 
 /* styles */
+body {
+  background-color: var(--background-color);
+}
+
 .icon {
   height: 28px;
   padding: 2px;
+  filter: brightness(0) saturate(100%) invert(54%) sepia(87%) saturate(414%)
+    hue-rotate(10deg) brightness(100%) contrast(91%);
 }
 
 p {
@@ -183,7 +215,7 @@ p {
 }
 
 header {
-  background-color: lightcoral;
+  background-color: var(--primary-color);
 }
 
 .appbar {
@@ -194,8 +226,13 @@ header {
   position: relative;
 }
 
+.appbar .icon,
+.new-book-button .icon {
+  filter: none;
+}
+
 .menu-list {
-  background-color: white;
+  background-color: var(--card-color);
   box-shadow: var(--abosolute-shadow);
   position: absolute;
   right: 8px;
@@ -233,7 +270,7 @@ header {
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  background-color: lightcoral;
+  background-color: var(--primary-color);
   box-shadow: var(--abosolute-shadow);
   position: absolute;
   right: 20px;
@@ -243,6 +280,7 @@ header {
 dialog {
   border: none;
   border-radius: var(--radius);
+  background-color: var(--card-color);
 }
 
 dialog::backdrop {
@@ -255,12 +293,12 @@ form button {
 }
 
 form button[type="submit"] {
-  background-color: lightcoral;
-  border: 1px solid lightcoral;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
 form .cancel {
-  border: 1px solid black;
+  border: 1px solid var(--primary-color);
 }
 
 form p:last-of-type {
@@ -274,9 +312,14 @@ label[class="text-input"] {
   gap: 4px;
 }
 
+input {
+  background-color: var(--card-color);
+  border: solid var(--background-color);
+}
+
 input:focus {
   border: none;
-  outline: 2px solid lightcoral;
+  outline: 2px solid var(--primary-color);
 }
 
 .books ul {
@@ -286,6 +329,7 @@ input:focus {
 }
 
 .book {
+  background-color: var(--card-color);
   padding: 1em;
   border-radius: var(--radius);
   box-shadow: -4px 3px 4px -4px;
