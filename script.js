@@ -232,9 +232,6 @@ function clearLibrary(e) {
 }
 
 // Code starts here
-
-// TODO: clear from if escape button is pressed
-
 const container = document.querySelector(".books");
 
 const newBookButton = document.querySelector(".new-book-button");
