@@ -328,6 +328,15 @@ input:focus {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
+.books > ul {
+  margin-top: 1em;
+}
+
+.books > p {
+  margin-top: 12em;
+  text-align: center;
+}
+
 .book {
   background-color: var(--card-color);
   padding: 1em;

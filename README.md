@@ -2,14 +2,9 @@
 
 ## TODOs
 
-- dark mode
-- responsive design
-- keyboard shortcut
 - about page
-- help menu
 - credit icons
-- localstorage
-- clear from if escape button is pressed
+- no book message book + icon
 
 ## Credits
 
