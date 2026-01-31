@@ -3,7 +3,7 @@
 Library project from [The odin project](https://theodinproject.com).
 Assignment https://www.theodinproject.com/lessons/node-path-javascript-library
 
-Live preview at https://github.io/Deepesh2023/top-library
+Live preview at https://deepesh2023.github.io/top-library/
 
 ## Credits
 
