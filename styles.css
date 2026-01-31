@@ -270,10 +270,12 @@ header {
   max-width: 960px;
 }
 
+.books > p,
 .container > p:first-of-type {
   margin-top: 12em;
 }
 
+.books > p,
 .container > p {
   text-align: center;
 }
