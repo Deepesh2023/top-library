@@ -16,17 +16,6 @@ function Library() {
 
   const books = [];
 
-  books.push(
-    new Book(
-      (id = "42"),
-      (title = "Book"),
-      (coverImage = null),
-      (author = "Author"),
-      (pages = 100),
-      (read = false),
-    ),
-  );
-
   this.add = function (title, coverImage, author, pages, read) {
     const id = crypto.randomUUID();
     const book = new Book(id, title, coverImage, author, pages, read);
