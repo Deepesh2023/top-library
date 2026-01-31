@@ -143,6 +143,16 @@ button {
   cursor: pointer;
 }
 
+a {
+  color: inherit;
+}
+
+a:link,
+a:hover,
+a:visited {
+  text-decoration: none;
+}
+
 /* colors */
 :root {
   --primary-color: #c7a11a;
@@ -260,6 +270,14 @@ header {
   max-width: 960px;
 }
 
+.container > p:first-of-type {
+  margin-top: 12em;
+}
+
+.container > p {
+  text-align: center;
+}
+
 .container,
 .appbar {
   width: 90%;
@@ -326,15 +344,7 @@ input:focus {
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-}
-
-.books > ul {
   margin-top: 1em;
-}
-
-.books > p {
-  margin-top: 12em;
-  text-align: center;
 }
 
 .book {
