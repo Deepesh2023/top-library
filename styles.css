@@ -153,6 +153,10 @@ a:visited {
   text-decoration: none;
 }
 
+input {
+  color: inherit;
+}
+
 /* colors */
 :root {
   --primary-color: #c7a11a;
